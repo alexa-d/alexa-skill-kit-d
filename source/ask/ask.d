@@ -144,7 +144,15 @@ struct AlexaRequest
     string message;
   }
 
-  string type;
+  enum Type
+  {
+    LaunchRequest,
+    IntentRequest,
+    SessionEndedRequest
+  }
+
+  @byName
+  Type type;
   string requestId;
   string timestamp;
   string locale;
