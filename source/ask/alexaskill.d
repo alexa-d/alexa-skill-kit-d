@@ -7,7 +7,7 @@ import ask.types;
 /// annotation to mark an intent callback, use name to specify the exact intent name as specified in the intent schema
 struct CustomIntent
 {
-  string name;
+	string name;
 }
 
 ///
@@ -36,7 +36,7 @@ abstract class AlexaSkill(T)
 	}
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#launchrequest
-	AlexaResult onLaunch(AlexaEvent event, AlexaContext context)
+	AlexaResult onLaunch(AlexaEvent, AlexaContext)
 	{
 		throw new Exception("not implemented");
 	}
@@ -46,9 +46,11 @@ abstract class AlexaSkill(T)
 	{
 		import std.traits:hasUDA,getUDAs;
 
-		foreach(i, member; __traits(allMembers, T))
+		foreach(i, member; __traits(derivedMembers, T))
 		{
-			static if(hasUDA!(__traits(getMember, T, member), CustomIntent))
+			enum isPublic = __traits(getProtection, __traits(getMember, cast(T)this, member)) == "public";
+
+			static if(isPublic && hasUDA!(__traits(getMember, T, member), CustomIntent))
 			{
 				enum name = getUDAs!(__traits(getMember, T, member), CustomIntent)[0].name;
 				
@@ -63,7 +65,7 @@ abstract class AlexaSkill(T)
 	}
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#sessionendedrequest
-	void onSessionEnd(AlexaEvent event, AlexaContext context)
+	void onSessionEnd(AlexaEvent, AlexaContext)
 	{
 		throw new Exception("not implemented");
 	}
