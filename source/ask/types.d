@@ -108,7 +108,9 @@ struct AlexaRequestContext {
   ///
   struct AlexaAudioPlayer
   {
+  	@optional
     string token;
+    @optional
     int offsetInMilliseconds;
     string playerActivity;
   }
