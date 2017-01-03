@@ -204,5 +204,5 @@ struct AlexaContext
   bool callbackWaitsForEmptyEventLoop;
   string logGroupName;
   string functionVersion;
-  int memoryLimitInMB;
+  string memoryLimitInMB;
 }
