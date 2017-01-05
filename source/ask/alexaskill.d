@@ -16,8 +16,12 @@ abstract class AlexaSkill(T)
 	///
 	int execute(AlexaEvent event, AlexaContext context)
 	{
+		import std.stdio:writeln,stderr;
+
 		runTask({
 			scope(exit) exitEventLoop();
+
+			stderr.writefln("execute request: %s",event.request.type);
 
 			AlexaResult result;
 
@@ -28,8 +32,13 @@ abstract class AlexaSkill(T)
 			else if(event.request.type == AlexaRequest.Type.SessionEndedRequest)
 				onSessionEnd(event, context);
 
-			import std.stdio:writeln;
 			writeln(serializeToJson(result).toPrettyString());
+		});
+
+		setTimer(2.seconds, {
+			writeln("{}");
+			stderr.writeln("intent timeout");
+			exitEventLoop();
 		});
 
 		return runEventLoop();
@@ -61,6 +70,8 @@ abstract class AlexaSkill(T)
 			}
 		}
 
+		import std.stdio:stderr;
+		stderr.writefln("onIntent did not match: %s",event);
 		return AlexaResult();
 	}
 
