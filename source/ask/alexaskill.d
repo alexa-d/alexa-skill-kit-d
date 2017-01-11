@@ -3,10 +3,12 @@ module ask.alexaskill;
 import vibe.d;
 
 import ask.types;
+import ask.locale;
 
 /// annotation to mark an intent callback, use name to specify the exact intent name as specified in the intent schema
 struct CustomIntent
 {
+	///
 	string name;
 }
 
@@ -14,7 +16,24 @@ struct CustomIntent
 abstract class AlexaSkill(T)
 {
 	///
-	int execute(AlexaEvent event, AlexaContext context)
+	private AlexaText[] localeText;
+
+	/++ 
+	 + constructor that requires the loca table as input
+	 +
+	 + params:
+	 +   text = loca table to use for that request
+	 +
+	 + see_also:
+	 +  `AlexaText`, `LocaParser` 
+	 +/	
+	this(AlexaText[] text)
+	{
+		localeText = text;
+	}
+
+	///
+	int execute(AlexaEvent event, AlexaContext context, Duration timeout = 2.seconds)
 	{
 		import std.stdio:writeln,stderr;
 
@@ -35,13 +54,19 @@ abstract class AlexaSkill(T)
 			writeln(serializeToJson(result).toPrettyString());
 		});
 
-		setTimer(2.seconds, {
+		setTimer(timeout, {
 			writeln("{}");
 			stderr.writeln("intent timeout");
 			exitEventLoop();
 		});
 
 		return runEventLoop();
+	}
+
+	/// returns the 
+	string getText(int _key) const pure nothrow
+	{
+		return localeText[_key].text;
 	}
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#launchrequest
