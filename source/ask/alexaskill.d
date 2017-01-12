@@ -4,6 +4,7 @@ import vibe.d;
 
 import ask.types;
 import ask.locale;
+import ask.baseintent;
 
 /// annotation to mark an intent callback, use name to specify the exact intent name as specified in the intent schema
 struct CustomIntent
@@ -13,10 +14,12 @@ struct CustomIntent
 }
 
 ///
-abstract class AlexaSkill(T)
+abstract class AlexaSkill(T) : ITextManager
 {
 	///
 	private AlexaText[] localeText;
+	///
+	private BaseIntent[] intents;
 
 	/++ 
 	 + constructor that requires the loca table as input
@@ -33,7 +36,7 @@ abstract class AlexaSkill(T)
 	}
 
 	///
-	int execute(AlexaEvent event, AlexaContext context, Duration timeout = 2.seconds)
+	int runInEventLoop(AlexaEvent event, AlexaContext context, Duration timeout = 2.seconds)
 	{
 		import std.stdio:writeln,stderr;
 
@@ -42,14 +45,7 @@ abstract class AlexaSkill(T)
 
 			stderr.writefln("execute request: %s",event.request.type);
 
-			AlexaResult result;
-
-			if(event.request.type == AlexaRequest.Type.LaunchRequest)
-				result = onLaunch(event, context);
-			else if(event.request.type == AlexaRequest.Type.IntentRequest)
-				result = onIntent(event, context);
-			else if(event.request.type == AlexaRequest.Type.SessionEndedRequest)
-				onSessionEnd(event, context);
+			auto result = executeEvent(event, context);
 
 			writeln(serializeToJson(result).toPrettyString());
 		});
@@ -61,6 +57,28 @@ abstract class AlexaSkill(T)
 		});
 
 		return runEventLoop();
+	}
+
+	///
+	AlexaResult executeEvent(AlexaEvent event, AlexaContext context)
+	{
+		AlexaResult result;
+
+		if(event.request.type == AlexaRequest.Type.LaunchRequest)
+			result = onLaunch(event, context);
+		else if(event.request.type == AlexaRequest.Type.IntentRequest)
+			result = onIntent(event, context);
+		else if(event.request.type == AlexaRequest.Type.SessionEndedRequest)
+			onSessionEnd(event, context);
+
+		return result;
+	} 
+
+	/// see_also: `BaseIntent`
+	void addIntent(BaseIntent intent)
+	{
+		intents ~= intent;
+		intent.texts = this;
 	}
 
 	/// returns the 
@@ -95,8 +113,23 @@ abstract class AlexaSkill(T)
 			}
 		}
 
+		return tryRegisteredIntents(event, context);
+	}
+
+	///
+	private AlexaResult tryRegisteredIntents(AlexaEvent event, AlexaContext context)
+	{
 		import std.stdio:stderr;
-		stderr.writefln("onIntent did not match: %s",event);
+
+		const eventIntent = event.request.intent.name;
+
+		foreach(baseIntent; intents)
+		{
+			if(baseIntent.name == eventIntent)
+				return baseIntent.onIntent(event,context);
+		}
+		
+		stderr.writefln("onIntent did not match: %s",eventIntent);
 		return AlexaResult();
 	}
 

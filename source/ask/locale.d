@@ -1,6 +1,13 @@
 module ask.locale;
 
 ///
+interface ITextManager
+{
+    ///
+    string getText(int _key) const pure nothrow;
+}
+
+///
 struct AlexaText
 {
 	///
