@@ -1,0 +1,11 @@
+language: d
+
+sudo: false
+
+d:
+  # https://semitwist.com/travis-d-compilers
+  - dmd #-2.072.2
+  - ldc
+
+script:
+  - dub test --compiler=$DC || exit 1
