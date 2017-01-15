@@ -18,10 +18,11 @@ struct CustomIntent
 }
 
 /++ 
- + abstract base class to inherit your skill from.
- + there are two ways to implement a alexa intent:
- + 1) add a @CustomIntent annotation to a method in your skill class
- + 2) create an intent class inheriting from `BaseIntent` and register it using `addIntent`
+ + Abstract base class to inherit your skill from.
+ +
+ + There are two ways to implement a alexa intent:
+ +	1) add a @CustomIntent annotation to a method in your skill class
+ +	2) create an intent class inheriting from `BaseIntent` and register it using `addIntent`
  +/
 abstract class AlexaSkill(T) : ITextManager
 {
