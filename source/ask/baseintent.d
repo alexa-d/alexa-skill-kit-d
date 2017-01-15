@@ -1,35 +1,43 @@
+/++
+ + Authors: Stephan Dilly, lastname dot firstname at gmail dot com
+ + Copyright: MIT
+ +/
 module ask.baseintent;
 
 import ask.alexaskill;
 import ask.locale;
 import ask.types;
 
-///
+/// abstract base class for a separate intent
 abstract class BaseIntent
 {
 	///
-	immutable string name;
+	private immutable string _name;
 	///
-	ITextManager texts;
+	private ITextManager _texts;
+	/// allows to query for the intents string representation that needs to match intent schema
+	public @property string name() const nothrow pure { return _name; }
+	/// allows to define used textManager
+	public @property void textManager(ITextManager _mgr) nothrow { _texts = _mgr; }
 
-	///
-	this()
+	/// c'tor
+	public this()
 	{
 		import std.array:split;
 
 		TypeInfo_Class info = cast(TypeInfo_Class)typeid(this);
 		auto fullnameParts = info.name.split(".");
-		this.name = fullnameParts[$-1];
+		_name = fullnameParts[$-1];
 	}
 
-	///
-	string getText(int _key) const pure nothrow
+	/// forwards to currently active `ITextManager.getText`
+	protected string getText(int _key) const pure nothrow
 	{
-		return texts.getText(_key);
+		return _texts.getText(_key);
 	}
 
-	///
-	AlexaResult onIntent(AlexaEvent, AlexaContext);
+	/// handler that needs to be implemented in inheriting Intent
+	public AlexaResult onIntent(AlexaEvent, AlexaContext);
 }
 
 ///

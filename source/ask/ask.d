@@ -1,3 +1,7 @@
+/++
+ + Authors: Stephan Dilly, lastname dot firstname at gmail dot com
+ + Copyright: MIT
+ +/
 module ask.ask;
 
 public import ask.alexaskill;

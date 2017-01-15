@@ -1,3 +1,7 @@
+/++
+ + Authors: Stephan Dilly, lastname dot firstname at gmail dot com
+ + Copyright: MIT
+ +/
 module ask.alexaskill;
 
 import vibe.d;
@@ -30,13 +34,13 @@ abstract class AlexaSkill(T) : ITextManager
 	 + see_also:
 	 +  `AlexaText`, `LocaParser` 
 	 +/	
-	this(AlexaText[] text)
+	public this(AlexaText[] text)
 	{
 		localeText = text;
 	}
 
 	///
-	int runInEventLoop(AlexaEvent event, AlexaContext context, Duration timeout = 2.seconds)
+	public int runInEventLoop(AlexaEvent event, AlexaContext context, Duration timeout = 2.seconds)
 	{
 		import std.stdio:writeln,stderr;
 
@@ -60,7 +64,7 @@ abstract class AlexaSkill(T) : ITextManager
 	}
 
 	///
-	AlexaResult executeEvent(AlexaEvent event, AlexaContext context)
+	package AlexaResult executeEvent(AlexaEvent event, AlexaContext context)
 	{
 		AlexaResult result;
 
@@ -74,21 +78,23 @@ abstract class AlexaSkill(T) : ITextManager
 		return result;
 	} 
 
-	/// see_also: `BaseIntent`
-	void addIntent(BaseIntent intent)
+	/++ 
+	 + adds an intent handler
+	 + 
+	 + see_also: 
+	 +	`BaseIntent`
+	 +/
+	public void addIntent(BaseIntent intent)
 	{
 		intents ~= intent;
-		intent.texts = this;
+		intent.textManager = this;
 	}
 
 	/++
 	 + returns the localized text string depending on the loaded locale database
 	 + 
-	 + params:
-	 +	_key = loca lookup key
-	 +
 	 + see_also:
-	 +	`this`, `AlexaText`, `LocaParser`
+	 +	`this`, `ITextManager`
 	 +/
 	string getText(int _key) const pure nothrow
 	{
@@ -96,13 +102,13 @@ abstract class AlexaSkill(T) : ITextManager
 	}
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#launchrequest
-	AlexaResult onLaunch(AlexaEvent, AlexaContext)
+	protected AlexaResult onLaunch(AlexaEvent, AlexaContext)
 	{
 		throw new Exception("not implemented");
 	}
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#intentrequest
-	AlexaResult onIntent(AlexaEvent event, AlexaContext context)
+	private AlexaResult onIntent(AlexaEvent event, AlexaContext context)
 	{
 		import std.traits:hasUDA,getUDAs;
 
@@ -142,7 +148,7 @@ abstract class AlexaSkill(T) : ITextManager
 	}
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#sessionendedrequest
-	void onSessionEnd(AlexaEvent, AlexaContext)
+	protected void onSessionEnd(AlexaEvent, AlexaContext)
 	{
 		throw new Exception("not implemented");
 	}

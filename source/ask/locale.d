@@ -1,9 +1,22 @@
+
+/++
+ + Authors: Stephan Dilly, lastname dot firstname at gmail dot com
+ + Copyright: MIT
+ +/
 module ask.locale;
 
 ///
 interface ITextManager
 {
-    ///
+    /++
+	 + returns the localized text string depending on the loaded locale database
+	 + 
+	 + params:
+	 +	_key = loca lookup key
+	 +
+	 + see_also:
+	 +	`this`, `AlexaText`, `LocaParser`
+	 +/
     string getText(int _key) const pure nothrow;
 }
 
