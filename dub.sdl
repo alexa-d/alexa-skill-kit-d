@@ -6,3 +6,8 @@ license "MIT"
 dependency "vibe-d" version="~>0.7.30"
 targetType "library"
 targetPath "lib"
+
+// solely to generate the docs.json
+configuration "ddox" {
+	dflags "-D" "-X" "-Xfdocs.json"
+}
