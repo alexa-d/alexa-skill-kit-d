@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Class AlexaSkill</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
+		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
+		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script>
+		<script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
+	</head>
+	<body onload="setupDdox();">
+		<nav id="main-nav">
+						<ul class="tree-view">
+							<li class="tree-view">
+								<a href="#" class="package">ask</a>
+						<ul class="tree-view">
+							<li>
+								<a href="../../ask/alexaskill.html" class="selected module">alexaskill</a>
+							</li>
+							<li>
+								<a href="../../ask/ask.html" class=" module">ask</a>
+							</li>
+							<li>
+								<a href="../../ask/baseintent.html" class=" module">baseintent</a>
+							</li>
+							<li>
+								<a href="../../ask/locale.html" class=" module">locale</a>
+							</li>
+							<li>
+								<a href="../../ask/types.html" class=" module">types</a>
+							</li>
+						</ul>
+							</li>
+						</ul>
+				<noscript>
+					<p style="color: red">The search functionality needs JavaScript enabled</p>
+				</noscript>
+				<div id="symbolSearchPane" style="display: none">
+					<p>
+						<input id="symbolSearch" type="text" placeholder="Search for symbols" onchange="performSymbolSearch(24);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+					</p>
+	<ul id="symbolSearchResults" style="display: none"></ul>
+	<script type="application/javascript" src="../../symbols.js"></script>
+	<script type="application/javascript">
+var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();
+	</script>
+				</div>
+		</nav>
+		<div id="main-contents">
+			<h1>Class AlexaSkill</h1>
+			<section>
+				<p></p>
+
+					<section>
+						<h3>Template arguments</h3>
+						<div class="prototype">
+							<code class="lang-d"><span class="kwd">class</span> <span class="typ">AlexaSkill</span><span class="pun">(</span><span class="pln">T</span><span class="pun">)</span>;
+							</code>
+						</div>
+					</section>
+					<section>
+						<h3>Inherits from</h3>
+						<ul>
+							<li>
+								<code class="prettyprint lang-d"><span class="typ">Object</span></code>
+ (base class)
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Constructors</h3>
+						<table>
+							<col class="caption"/>
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.this.html" class="public">
+										<code>this</code>
+									</a>
+								</td>
+								<td>constructor that requires the loca table as input
+</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Fields</h3>
+						<table>
+							<col class="caption"/>
+							<tr>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Description</th>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.intents.html" class="public"><code>intents</code></a>
+								</td>
+								<td class="typecol"><code class="prettyprint lang-d"><a href="../../ask/baseintent/BaseIntent.html"><span class="typ">BaseIntent</span></a><span class="pun">[]</span></code></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.localeText.html" class="public"><code>localeText</code></a>
+								</td>
+								<td class="typecol"><code class="prettyprint lang-d"><a href="../../ask/locale/AlexaText.html"><span class="typ">AlexaText</span></a><span class="pun">[]</span></code></td>
+								<td></td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Methods</h3>
+						<table>
+							<col class="caption"/>
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.addIntent.html" class="public">
+										<code>addIntent</code>
+									</a>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.executeEvent.html" class="public">
+										<code>executeEvent</code>
+									</a>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.getText.html" class="public">
+										<code>getText</code>
+									</a>
+								</td>
+								<td>returns the
+</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.onIntent.html" class="public">
+										<code>onIntent</code>
+									</a>
+								</td>
+								<td>see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#intentrequest
+</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.onLaunch.html" class="public">
+										<code>onLaunch</code>
+									</a>
+								</td>
+								<td>see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#launchrequest
+</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.onSessionEnd.html" class="public">
+										<code>onSessionEnd</code>
+									</a>
+								</td>
+								<td>see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#sessionendedrequest
+</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.runInEventLoop.html" class="public">
+										<code>runInEventLoop</code>
+									</a>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/alexaskill/AlexaSkill.tryRegisteredIntents.html" class="public">
+										<code>tryRegisteredIntents</code>
+									</a>
+								</td>
+								<td></td>
+							</tr>
+						</table>
+					</section>
+
+			</section>
+			<section>
+				<h2>Authors</h2>
+
+			</section>
+			<section>
+				<h2>Copyright</h2>
+
+			</section>
+			<section>
+				<h2>License</h2>
+
+			</section>
+		</div>
+	</body>
+</html>

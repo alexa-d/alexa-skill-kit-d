@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Function LocaParser</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
+		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
+		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script>
+		<script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
+	</head>
+	<body onload="setupDdox();">
+		<nav id="main-nav">
+						<ul class="tree-view">
+							<li class="tree-view">
+								<a href="#" class="package">ask</a>
+						<ul class="tree-view">
+							<li>
+								<a href="../../ask/alexaskill.html" class=" module">alexaskill</a>
+							</li>
+							<li>
+								<a href="../../ask/ask.html" class=" module">ask</a>
+							</li>
+							<li>
+								<a href="../../ask/baseintent.html" class=" module">baseintent</a>
+							</li>
+							<li>
+								<a href="../../ask/locale.html" class="selected module">locale</a>
+							</li>
+							<li>
+								<a href="../../ask/types.html" class=" module">types</a>
+							</li>
+						</ul>
+							</li>
+						</ul>
+				<noscript>
+					<p style="color: red">The search functionality needs JavaScript enabled</p>
+				</noscript>
+				<div id="symbolSearchPane" style="display: none">
+					<p>
+						<input id="symbolSearch" type="text" placeholder="Search for symbols" onchange="performSymbolSearch(24);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+					</p>
+	<ul id="symbolSearchResults" style="display: none"></ul>
+	<script type="application/javascript" src="../../symbols.js"></script>
+	<script type="application/javascript">
+var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();
+	</script>
+				</div>
+		</nav>
+		<div id="main-contents">
+			<h1>Function LocaParser</h1>
+			<section>
+				<p>template to parse csv of loca entries
+</p>
+
+					<section>
+						<h3>Prototype</h3>
+						<div class="prototype">
+							<code class="lang-d">
+<span class="typ">string</span> <span class="pln">LocaParser<span class="pun">(</span><span class="pln">E</span><span class="pun">, </span><span class="typ">string </span><span class="pln">input</span><span class="pun">)</span><span class="pun">()</span><span class="pun">;</span>
+							</code>
+						</div>
+					</section>
+<section><h3>Example</h3>
+
+<pre class="code"><code class="lang-d"><span class="kwd">enum </span><span class="typ">TextIds 
+</span><span class="pun">{
+    </span><span class="pln">key1</span><span class="pun">,</span><span class="pln">key2
+</span><span class="pun">}
+
+	</span><span class="kwd">enum </span><span class="pln">testCsv </span><span class="pun">= </span><span class="str">"key2, foo\n key1 ,  bar  "</span><span class="pun">;
+
+</span><span class="kwd">enum <a href="../../ask/locale/AlexaText.html"></span><span class="typ">AlexaText</span></a><span class="pun">[] </span><span class="typ">AlexaText_test </span><span class="pun">= </span><span class="kwd">mixin</span><span class="pun">(</span><span class="typ">LocaParser</span><span class="pun">!(</span><span class="typ">TextIds</span><span class="pun">,</span><span class="pln">testCsv</span><span class="pun">));
+
+</span><span class="kwd">static assert</span><span class="pun">(</span><span class="typ">AlexaText_test</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]<wbr/>.</span><span class="pln">text </span><span class="pun">== </span><span class="str">"bar"</span><span class="pun">);
+</span><span class="kwd">static assert</span><span class="pun">(</span><span class="typ">AlexaText_test</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]<wbr/>.</span><span class="pln">text </span><span class="pun">== </span><span class="str">"foo"</span><span class="pun">);
+
+</span><span class="kwd">static assert</span><span class="pun">(</span><span class="typ">AlexaText_test</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]<wbr/>.</span><span class="pln">key </span><span class="pun">== </span><span class="typ">TextIds<wbr/></span><span class="pun">.</span><span class="pln">key1</span><span class="pun">);
+</span><span class="kwd">static assert</span><span class="pun">(</span><span class="typ">AlexaText_test</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]<wbr/>.</span><span class="pln">key </span><span class="pun">== </span><span class="typ">TextIds<wbr/></span><span class="pun">.</span><span class="pln">key2</span><span class="pun">);
+</span></code></pre>
+</section>
+
+			</section>
+			<section>
+				<h2>Authors</h2>
+
+			</section>
+			<section>
+				<h2>Copyright</h2>
+
+			</section>
+			<section>
+				<h2>License</h2>
+
+			</section>
+		</div>
+	</body>
+</html>
