@@ -50,7 +50,8 @@ $('#symbolSearchPane').show();
 		<div id="main-contents">
 			<h1>Class BaseIntent</h1>
 			<section>
-				<p></p>
+				<p>abstract base class for a separate intent
+</p>
 
 					<section>
 						<h3>Inherits from</h3>
@@ -75,12 +76,13 @@ $('#symbolSearchPane').show();
 										<code>this</code>
 									</a>
 								</td>
-								<td></td>
+								<td>c'tor
+</td>
 							</tr>
 						</table>
 					</section>
 					<section>
-						<h3>Fields</h3>
+						<h3>Properties</h3>
 						<table>
 							<col class="caption"/>
 							<tr>
@@ -90,17 +92,21 @@ $('#symbolSearchPane').show();
 							</tr>
 							<tr>
 								<td>
-									<a href="../../ask/baseintent/BaseIntent.name.html" class="public"><code>name</code></a>
+									<a href="../../ask/baseintent/BaseIntent.name.html" class="public property"><code>name</code></a>
+									<span class="tableEntryAnnotation">[get]</span>
 								</td>
-								<td class="typecol"><code class="prettyprint lang-d"><span class="kwd">immutable</span><span class="pun">(</span><span class="typ">char</span><span class="pun">[]</span><span class="pun">)</span></code></td>
-								<td></td>
+								<td class="typecol"><code class="prettyprint lang-d"><span class="typ">string</span></code></td>
+								<td>allows to query for the intents string representation that needs to match intent schema
+</td>
 							</tr>
 							<tr>
 								<td>
-									<a href="../../ask/baseintent/BaseIntent.texts.html" class="public"><code>texts</code></a>
+									<a href="../../ask/baseintent/BaseIntent.textManager.html" class="public property"><code>textManager</code></a>
+									<span class="tableEntryAnnotation">[set]</span>
 								</td>
 								<td class="typecol"><code class="prettyprint lang-d"><a href="../../ask/locale/ITextManager.html"><span class="typ">ITextManager</span></a></code></td>
-								<td></td>
+								<td>allows to define used textManager
+</td>
 							</tr>
 						</table>
 					</section>
@@ -114,19 +120,21 @@ $('#symbolSearchPane').show();
 							</tr>
 							<tr>
 								<td>
-									<a href="../../ask/baseintent/BaseIntent.getText.html" class="public">
-										<code>getText</code>
-									</a>
-								</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>
 									<a href="../../ask/baseintent/BaseIntent.onIntent.html" class="public">
 										<code>onIntent</code>
 									</a>
 								</td>
-								<td></td>
+								<td>handler that needs to be implemented in inheriting Intent
+</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="../../ask/baseintent/BaseIntent.getText.html" class="protected">
+										<code>getText</code>
+									</a>
+								</td>
+								<td>forwards to currently active <code class="lang-d"><span class="typ">ITextManager<wbr/></span><span class="pun">.</span><span class="pln">getText</span></code>
+</td>
 							</tr>
 						</table>
 					</section>
@@ -159,10 +167,14 @@ $('#symbolSearchPane').show();
 			</section>
 			<section>
 				<h2>Authors</h2>
+<p>Stephan Dilly, lastname dot firstname at gmail dot com
+</p>
 
 			</section>
 			<section>
 				<h2>Copyright</h2>
+<p>MIT
+</p>
 
 			</section>
 			<section>

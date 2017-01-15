@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Variable BaseIntent.texts</title>
+		<title>Function BaseIntent.textManager</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script>
@@ -48,25 +48,20 @@ $('#symbolSearchPane').show();
 				</div>
 		</nav>
 		<div id="main-contents">
-			<h1>Variable BaseIntent.texts</h1>
+			<h1>Function BaseIntent.textManager</h1>
 			<section>
-				<p></p>
+				<p>allows to define used textManager
+</p>
 
 					<section>
-						<h3>Declaration</h3>
+						<h3>Prototype</h3>
 						<div class="prototype">
 							<code class="lang-d">
-<span class="kwd">class</span> <a href="../../ask/baseintent/BaseIntent.html"><span class="typ">BaseIntent</span></a>
+<span class="typ">void</span> <span class="pln">textManager</span><span class="pun">(</span>
 								<br/>
-								<span class="pun">{</span>
+&nbsp;&nbsp;<a href="../../ask/locale/ITextManager.html"><span class="typ">ITextManager</span></a> <span class="pln">_mgr</span>
 								<br/>
-&nbsp;&nbsp;<span class="com">// ...</span>
-								<br/>
-&nbsp;&nbsp;<a href="../../ask/locale/ITextManager.html"><span class="typ">ITextManager</span></a> <span class="pln">texts</span><span class="pun">;</span>
-								<br/>
-&nbsp;&nbsp;<span class="com">// ...</span>
-								<br/>
-								<span class="pun">}</span>
+<span class="pun">)</span><span class="pln"> </span><span class="kwd">nothrow @property</span><span class="pun">;</span>
 							</code>
 						</div>
 					</section>
@@ -74,10 +69,14 @@ $('#symbolSearchPane').show();
 			</section>
 			<section>
 				<h2>Authors</h2>
+<p>Stephan Dilly, lastname dot firstname at gmail dot com
+</p>
 
 			</section>
 			<section>
 				<h2>Copyright</h2>
+<p>MIT
+</p>
 
 			</section>
 			<section>

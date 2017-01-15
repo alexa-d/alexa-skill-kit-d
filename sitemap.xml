@@ -19,11 +19,11 @@
 <url><loc>http://127.0.0.1/ask/ask.html</loc></url>
 <url><loc>http://127.0.0.1/ask/baseintent.html</loc></url>
 <url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.html</loc></url>
-<url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.getText.html</loc></url>
 <url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.name.html</loc></url>
 <url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.onIntent.html</loc></url>
-<url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.texts.html</loc></url>
+<url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.textManager.html</loc></url>
 <url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.this.html</loc></url>
+<url><loc>http://127.0.0.1/ask/baseintent/BaseIntent.getText.html</loc></url>
 <url><loc>http://127.0.0.1/ask/locale.html</loc></url>
 <url><loc>http://127.0.0.1/ask/locale/AlexaText.html</loc></url>
 <url><loc>http://127.0.0.1/ask/locale/AlexaText.key.html</loc></url>
@@ -103,8 +103,8 @@
 <url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.AlexaSystem.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.AlexaSystem.application.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.AlexaSystem.user.html</loc></url>
-<url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.AudioPlayer.html</loc></url>
-<url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.System.html</loc></url>
+<url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.audioPlayer.html</loc></url>
+<url><loc>http://127.0.0.1/ask/types/AlexaRequestContext.system.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResponse.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResponse.card.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResponse.outputSpeech.html</loc></url>
