@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # Settings
-REPO_PATH=git@github.com:Extrawurst/alexa-skill-kit-a.git
+REPO_PATH=git@github.com:Extrawurst/alexa-skill-kit-d.git
 HTML_PATH=~/doc-repo
 COMMIT_USER="doc-builder"
 COMMIT_EMAIL="travis@travis-ci.com"
