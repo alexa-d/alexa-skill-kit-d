@@ -13,7 +13,7 @@ struct CustomIntent
 	string name;
 }
 
-///
+/// abstract base class to inherit your skill from
 abstract class AlexaSkill(T) : ITextManager
 {
 	///
@@ -81,7 +81,15 @@ abstract class AlexaSkill(T) : ITextManager
 		intent.texts = this;
 	}
 
-	/// returns the 
+	/++
+	 + returns the localized text string depending on the loaded locale database
+	 + 
+	 + params:
+	 +	_key = loca lookup key
+	 +
+	 + see_also:
+	 +	`this`, `AlexaText`, `LocaParser`
+	 +/
 	string getText(int _key) const pure nothrow
 	{
 		return localeText[_key].text;
