@@ -11,7 +11,7 @@ script:
 
 after_success:
   - openssl aes-256-cbc -K $encrypted_4146233f44f9_key -iv $encrypted_4146233f44f9_iv
-    -in travisci.rsa.enc -out travisconfig/travisci.rsa -d
+  -in travisconfig/travisci_rsa.enc -out travisconfig/travisci_rsa -d
   - chmod 0600 travisconfig/travisci_rsa
   - cp travisconfig/travisci_rsa ~/.ssh/id_rsa
   - ./createddox.sh
