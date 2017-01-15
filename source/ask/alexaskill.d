@@ -17,12 +17,12 @@ struct CustomIntent
 	string name;
 }
 
-/++ 
+/++
  + Abstract base class to inherit your skill from.
  +
  + There are two ways to implement a alexa intent:
- +	1) add a @CustomIntent annotation to a method in your skill class
- +	2) create an intent class inheriting from `BaseIntent` and register it using `addIntent`
+ +	* add a @CustomIntent annotation to a method in your skill class
+ +	* create an intent class inheriting from `BaseIntent` and register it using `addIntent`
  +/
 abstract class AlexaSkill(T) : ITextManager
 {
@@ -31,15 +31,15 @@ abstract class AlexaSkill(T) : ITextManager
 	///
 	private BaseIntent[] intents;
 
-	/++ 
+	/++
 	 + constructor that requires the loca table as input
 	 +
 	 + params:
 	 +   text = loca table to use for that request
 	 +
 	 + see_also:
-	 +  `AlexaText`, `LocaParser` 
-	 +/	
+	 +  `AlexaText`, `LocaParser`
+	 +/
 	public this(AlexaText[] text)
 	{
 		localeText = text;
@@ -82,12 +82,12 @@ abstract class AlexaSkill(T) : ITextManager
 			onSessionEnd(event, context);
 
 		return result;
-	} 
+	}
 
-	/++ 
+	/++
 	 + adds an intent handler
-	 + 
-	 + see_also: 
+	 +
+	 + see_also:
 	 +	`BaseIntent`
 	 +/
 	public void addIntent(BaseIntent intent)
@@ -98,7 +98,7 @@ abstract class AlexaSkill(T) : ITextManager
 
 	/++
 	 + returns the localized text string depending on the loaded locale database
-	 + 
+	 +
 	 + see_also:
 	 +	`this`, `ITextManager`
 	 +/
@@ -125,7 +125,7 @@ abstract class AlexaSkill(T) : ITextManager
 			static if(isPublic && hasUDA!(__traits(getMember, T, member), CustomIntent))
 			{
 				enum name = getUDAs!(__traits(getMember, T, member), CustomIntent)[0].name;
-				
+
 				if(event.request.intent.name == name)
 				{
 					mixin("return (cast(T)this)."~member~"(event, context);");
@@ -148,7 +148,7 @@ abstract class AlexaSkill(T) : ITextManager
 			if(baseIntent.name == eventIntent)
 				return baseIntent.onIntent(event,context);
 		}
-		
+
 		stderr.writefln("onIntent did not match: %s",eventIntent);
 		return AlexaResult();
 	}
