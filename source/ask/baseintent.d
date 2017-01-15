@@ -9,7 +9,7 @@ import ask.locale;
 import ask.types;
 
 /// abstract base class for a separate intent
-abstract class BaseIntent
+abstract class BaseIntent : ITextManager
 {
 	///
 	private immutable string _name;
