@@ -40,7 +40,7 @@ abstract class AlexaSkill(T) : ITextManager
 	 + see_also:
 	 +  `AlexaText`, `LocaParser`
 	 +/
-	public this(AlexaText[] text)
+	public this(in AlexaText[] text)
 	{
 		localeText = text;
 	}
