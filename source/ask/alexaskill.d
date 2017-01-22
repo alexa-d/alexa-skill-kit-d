@@ -48,12 +48,13 @@ abstract class AlexaSkill(T) : ITextManager
 	///
 	public int runInEventLoop(AlexaEvent event, AlexaContext context, Duration timeout = 2.seconds)
 	{
-		import std.stdio:writeln,stderr;
+		import std.stdio : writeln, stderr;
 
 		runTask({
-			scope(exit) exitEventLoop();
+			scope (exit)
+				exitEventLoop();
 
-			stderr.writefln("execute request: %s",event.request.type);
+			stderr.writefln("execute request: %s", event.request.type);
 
 			auto result = executeEvent(event, context);
 
@@ -74,11 +75,11 @@ abstract class AlexaSkill(T) : ITextManager
 	{
 		AlexaResult result;
 
-		if(event.request.type == AlexaRequest.Type.LaunchRequest)
+		if (event.request.type == AlexaRequest.Type.LaunchRequest)
 			result = onLaunch(event, context);
-		else if(event.request.type == AlexaRequest.Type.IntentRequest)
+		else if (event.request.type == AlexaRequest.Type.IntentRequest)
 			result = onIntent(event, context);
-		else if(event.request.type == AlexaRequest.Type.SessionEndedRequest)
+		else if (event.request.type == AlexaRequest.Type.SessionEndedRequest)
 			onSessionEnd(event, context);
 
 		return result;
@@ -116,19 +117,19 @@ abstract class AlexaSkill(T) : ITextManager
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#intentrequest
 	private AlexaResult onIntent(AlexaEvent event, AlexaContext context)
 	{
-		import std.traits:hasUDA,getUDAs;
+		import std.traits : hasUDA, getUDAs;
 
-		foreach(i, member; __traits(derivedMembers, T))
+		foreach (i, member; __traits(derivedMembers, T))
 		{
-			enum isPublic = __traits(getProtection, __traits(getMember, cast(T)this, member)) == "public";
+			enum isPublic = __traits(getProtection, __traits(getMember, cast(T) this, member)) == "public";
 
-			static if(isPublic && hasUDA!(__traits(getMember, T, member), CustomIntent))
+			static if (isPublic && hasUDA!(__traits(getMember, T, member), CustomIntent))
 			{
 				enum name = getUDAs!(__traits(getMember, T, member), CustomIntent)[0].name;
 
-				if(event.request.intent.name == name)
+				if (event.request.intent.name == name)
 				{
-					mixin("return (cast(T)this)."~member~"(event, context);");
+					mixin("return (cast(T)this)." ~ member ~ "(event, context);");
 				}
 			}
 		}
@@ -139,17 +140,17 @@ abstract class AlexaSkill(T) : ITextManager
 	///
 	private AlexaResult tryRegisteredIntents(AlexaEvent event, AlexaContext context)
 	{
-		import std.stdio:stderr;
+		import std.stdio : stderr;
 
 		const eventIntent = event.request.intent.name;
 
-		foreach(baseIntent; intents)
+		foreach (baseIntent; intents)
 		{
-			if(baseIntent.name == eventIntent)
-				return baseIntent.onIntent(event,context);
+			if (baseIntent.name == eventIntent)
+				return baseIntent.onIntent(event, context);
 		}
 
-		stderr.writefln("onIntent did not match: %s",eventIntent);
+		stderr.writefln("onIntent did not match: %s", eventIntent);
 		return AlexaResult();
 	}
 
