@@ -27,7 +27,7 @@ struct CustomIntent
 abstract class AlexaSkill(T) : ITextManager
 {
 	///
-	private AlexaText[] localeText;
+	private immutable AlexaText[] localeText;
 	///
 	private BaseIntent[] intents;
 
@@ -40,7 +40,7 @@ abstract class AlexaSkill(T) : ITextManager
 	 + see_also:
 	 +  `AlexaText`, `LocaParser`
 	 +/
-	public this(in AlexaText[] text)
+	public this(immutable AlexaText[] text)
 	{
 		localeText = text;
 	}

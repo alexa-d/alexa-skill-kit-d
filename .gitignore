@@ -6,3 +6,4 @@ __dummy.html
 __test__*__
 dub.selections.json
 libalexa-skill-kit-d.a
+/lib/
