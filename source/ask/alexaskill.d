@@ -157,6 +157,5 @@ abstract class AlexaSkill(T) : ITextManager
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/custom-standard-request-types-reference#sessionendedrequest
 	protected void onSessionEnd(AlexaEvent, AlexaContext)
 	{
-		throw new Exception("not implemented");
 	}
 }
