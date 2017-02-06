@@ -94,7 +94,7 @@ struct AlexaResponse
 	///
 	Nullable!Reprompt reprompt;
 	///
-	bool shouldEndSession;
+	bool shouldEndSession = true;
 }
 
 ///
