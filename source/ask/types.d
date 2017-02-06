@@ -4,26 +4,28 @@
  +/
 module ask.types;
 
-import vibe.data.serialization:name,optional,byName;
-import std.typecons:Nullable;
+import vibe.data.serialization : name, optional, byName;
+import std.typecons : Nullable;
 
 ///
-struct AlexaUser {
+struct AlexaUser
+{
 	///
 	string userId;
 	///
-	@optional
-	string accessToken;
+	@optional string accessToken;
 }
 
 ///
-struct AlexaApplication {
+struct AlexaApplication
+{
 	///
 	string applicationId;
 }
 
 ///
-struct AlexaOutputSpeech {
+struct AlexaOutputSpeech
+{
 	///
 	enum Type
 	{
@@ -32,8 +34,7 @@ struct AlexaOutputSpeech {
 	}
 
 	///
-	@byName
-	Type type = Type.PlainText;
+	@byName Type type = Type.PlainText;
 	///
 	string text;
 	///
@@ -41,7 +42,8 @@ struct AlexaOutputSpeech {
 }
 
 /// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interface-reference#card-object
-struct AlexaCard {
+struct AlexaCard
+{
 
 	///
 	enum Type
@@ -52,8 +54,7 @@ struct AlexaCard {
 	}
 
 	///
-	@byName
-	Type type = Type.Simple;
+	@byName Type type = Type.Simple;
 	///
 	string title;
 	///
@@ -75,10 +76,12 @@ struct AlexaCard {
 }
 
 ///
-struct AlexaResponse {
+struct AlexaResponse
+{
 
 	///
-	struct Reprompt {
+	struct Reprompt
+	{
 		///
 		AlexaOutputSpeech outputSpeech;
 	}
@@ -92,7 +95,8 @@ struct AlexaResponse {
 }
 
 ///
-struct AlexaResult {
+struct AlexaResult
+{
 
 	///
 	@name("version")
@@ -116,7 +120,8 @@ struct AlexaResult {
 }+/
 
 /// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interface-reference#context-object
-struct AlexaRequestContext {
+struct AlexaRequestContext
+{
 
 	/// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interface-reference#system-object
 	struct AlexaSystem
@@ -133,11 +138,9 @@ struct AlexaRequestContext {
 	struct AlexaAudioPlayer
 	{
 		///
-		@optional
-		string token;
+		@optional string token;
 		///
-		@optional
-		int offsetInMilliseconds;
+		@optional int offsetInMilliseconds;
 		///
 		string playerActivity;
 	}
@@ -159,15 +162,13 @@ struct AlexaIntent
 		///
 		string name;
 		///
-		@optional
-		string value;
+		@optional string value;
 	}
 
 	///
 	string name;
 	///
-	@optional
-	AlexaSlot[string] slots;
+	@optional AlexaSlot[string] slots;
 }
 
 ///
@@ -194,8 +195,7 @@ struct AlexaRequest
 	}
 
 	///
-	@byName
-	Type type;
+	@byName Type type;
 	///
 	string requestId;
 	///
@@ -204,23 +204,21 @@ struct AlexaRequest
 	string locale;
 
 	///
-	@optional
-	string reason;
+	@optional string reason;
 
 	///
-	@optional
-	Error error;
+	@optional Error error;
 
 	///
-	@optional
-	AlexaIntent intent;
+	@optional AlexaIntent intent;
 }
 
 /// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interface-reference#request-format
-struct AlexaEvent {
-
+struct AlexaEvent
+{
 	///
-	struct Session {
+	struct Session
+	{
 
 		///
 		@name("new")
@@ -230,8 +228,7 @@ struct AlexaEvent {
 		///
 		AlexaApplication application;
 		///
-		@optional
-		string[string] attributes;
+		@optional string[string] attributes;
 		///
 		AlexaUser user;
 	}
