@@ -59,13 +59,13 @@
 <url><loc>http://127.0.0.1/ask/types/AlexaContext.memoryLimitInMB.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.request.html</loc></url>
+<url><loc>http://127.0.0.1/ask/types/AlexaEvent.session.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.Session.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.Session.application.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.Session.attributes.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.Session.sessionId.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.Session.user.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent.Session._new.html</loc></url>
-<url><loc>http://127.0.0.1/ask/types/AlexaEvent.session.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaEvent._version.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaIntent.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaIntent.AlexaSlot.html</loc></url>
@@ -111,10 +111,10 @@
 <url><loc>http://127.0.0.1/ask/types/AlexaResponse.Reprompt.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResponse.Reprompt.outputSpeech.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResponse.reprompt.html</loc></url>
+<url><loc>http://127.0.0.1/ask/types/AlexaResponse.shouldEndSession.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResult.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResult.response.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResult.sessionAttributes.html</loc></url>
-<url><loc>http://127.0.0.1/ask/types/AlexaResult.shouldEndSession.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaResult._version.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaUser.html</loc></url>
 <url><loc>http://127.0.0.1/ask/types/AlexaUser.accessToken.html</loc></url>
