@@ -5,6 +5,7 @@
 module ask.types;
 
 import vibe.data.serialization : name, optional, byName;
+import vibe.data.json : Json;
 import std.typecons : Nullable;
 
 ///
@@ -92,21 +93,19 @@ struct AlexaResponse
 	AlexaCard card;
 	///
 	Nullable!Reprompt reprompt;
+	///
+	bool shouldEndSession;
 }
 
 ///
 struct AlexaResult
 {
-
 	///
 	@name("version")
 	string _version = "1.0";
 
 	///
-	string[string] sessionAttributes;
-
-	///
-	bool shouldEndSession;
+	Json[string] sessionAttributes;
 
 	///
 	AlexaResponse response;
@@ -216,8 +215,6 @@ struct AlexaRequest
 /// see https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interface-reference#request-format
 struct AlexaEvent
 {
-	import vibe.data.json : Json;
-
 	///
 	struct Session
 	{
