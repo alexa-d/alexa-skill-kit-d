@@ -140,8 +140,6 @@ abstract class AlexaSkill(T) : ITextManager
 	///
 	private AlexaResult tryRegisteredIntents(AlexaEvent event, AlexaContext context)
 	{
-		import std.stdio : stderr;
-
 		const eventIntent = event.request.intent.name;
 
 		foreach (baseIntent; intents)
@@ -150,12 +148,14 @@ abstract class AlexaSkill(T) : ITextManager
 				return baseIntent.onIntent(event, context);
 		}
 
-		return noIntentMatch();
+		return noIntentMatch(event, context);
 	}
 
 	///
 	protected AlexaResult noIntentMatch(AlexaEvent event, AlexaContext)
 	{
+		import std.stdio : stderr;
+
 		stderr.writefln("no intent did match: %s", event.request.intent.name);
 		return AlexaResult();
 	}
