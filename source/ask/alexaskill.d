@@ -150,7 +150,13 @@ abstract class AlexaSkill(T) : ITextManager
 				return baseIntent.onIntent(event, context);
 		}
 
-		stderr.writefln("onIntent did not match: %s", eventIntent);
+		return noIntentMatch();
+	}
+
+	///
+	protected AlexaResult noIntentMatch(AlexaEvent event, AlexaContext)
+	{
+		stderr.writefln("no intent did match: %s", event.request.intent.name);
 		return AlexaResult();
 	}
 
