@@ -51,12 +51,19 @@ string LocaParser(E, string input)()
 			if (line.startsWith(enumMember))
 			{
 				auto lineArgs = line.split(",");
-				auto locaKey = lineArgs[0];
-				auto locaText = line[locaKey.length + 1 .. $].strip;
-				auto entry = format("AlexaText(%s.%s, \"%s\"),", E.stringof, enumMember, locaText);
-				res ~= entry ~ "\n";
-				found = true;
-				continue allMembers;
+
+				auto untilFirstComma = lineArgs[0];
+				auto locaKey = untilFirstComma.strip;
+
+				if (locaKey == enumMember)
+				{
+					auto locaText = line[untilFirstComma.length + 1 .. $].strip;
+					auto entry = format("AlexaText(%s.%s, \"%s\"),",
+							E.stringof, enumMember, locaText);
+					res ~= entry ~ "\n";
+					found = true;
+					continue allMembers;
+				}
 			}
 		}
 
@@ -84,4 +91,20 @@ unittest
 
 	static assert(AlexaText_test[0].key == TextIds.key1);
 	static assert(AlexaText_test[1].key == TextIds.key2);
+}
+
+///
+unittest
+{
+	enum TextIds
+	{
+		keyTitle,
+		key,
+	}
+
+	enum testCsv = "keyTitle, foo\n key, bar";
+
+	enum AlexaText[] AlexaText_test = mixin(LocaParser!(TextIds, testCsv));
+
+	static assert(AlexaText_test[1].text == "bar");
 }
